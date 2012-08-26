@@ -1,0 +1,8 @@
+class hole {
+public:
+	int tt;
+	hole &operator = (const hole &cc){
+		tt = cc.tt;
+		return *this;
+	}
+};

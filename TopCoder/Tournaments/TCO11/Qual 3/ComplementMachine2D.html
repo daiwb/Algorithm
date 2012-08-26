@@ -1,0 +1,49 @@
+<html><body bgcolor="#cccccc" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+A binary matrix is a matrix in which each cell contains either a 0 or a 1. A two dimensional complement machine is a machine that works over a binary matrix of N rows numbered from 0 through N-1 and M columns numbered from 0 to M-1.
+</p>
+<p>
+The machine has 4 instructions: N, S, E and W. Instructions N and S take an integer parameter i (0 &lt;= i &lt;= N-1). N replaces each cell with a row index less than or equal to i with its complement, while S replaces each cell with a row index greater than or equal to i with its complement.  The complement of 0 is 1, and the complement of 1 is 0. Instructions W and E take an integer parameter j (0 &lt;= j &lt;= M-1). W replaces each cell with a column index less than or equal to j with its complement, while E replaces each cell with a column index greater than or equal to j with its complement.
+</p>
+<p>
+We call a binary matrix erasable if it is possible to make all its cells contain a 0 after a finite number of instructions using a two dimensional complement machine. A contiguous submatrix is a matrix formed by selecting one or more consecutive rows and one or more consecutive columns from a bigger matrix. It is possible to select all rows and/or all columns. (See notes for an exact definition of "contiguous submatrix".)
+</p>
+<p>
+You will be given a vector &lt;string&gt; <b>matrix</b> representing a binary matrix. Return the number of cells in the largest contiguous submatrix of the original matrix that is erasable.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>ComplementMachine2D</td></tr><tr><td>Method:</td><td>largestSubmatrix</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int largestSubmatrix(vector &lt;string&gt; matrix)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>Suppose that A is a binary matrix containing N rows and M columns. Both rows and columns are 0-indexed. Let's use A[i][j] to denote the cell in row i, column j. A contiguous submatrix B of matrix A can be uniquely represented by 4 integers I1, I2, J1 and J2, 0 &lt;= I1 &lt;= I2 &lt; N, 0 &lt;= J1 &lt;= J2 &lt; M. The matrix B contains I2-I1+1 rows and J2-J1+1 columns. The value of B[i][j] is the same as A[i+I1][j+J1], for any i, j such that 0 &lt;= i &lt;= I2-I1, 0 &lt;= j &lt;= J2-J1.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>matrix</b> will contain between 1 and 40 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>matrix</b> will contain between 1 and 40 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>matrix</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of each element of <b>matrix</b> will be either '0' or '1'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0011&quot;,
+ &quot;0011&quot;,
+ &quot;1100&quot;,
+ &quot;0111&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 12</pre></td></tr><tr><td><table><tr><td colspan="2">The entire matrix is not erasable because it has an odd number of 0s and all allowed transformations complement an even number of cell values, and therefore maintain the parity of 0s. The contiguous submatrix that consists of the three topmost rows and all columns, however, is erasable. Here we depict a possible succession of steps that erases it:
+<pre>
+0011         1100         0000
+0011  -N1->  1100  -W1->  0000
+1100         1100         0000
+</pre>
+The first step complements the topmost 2 rows and the second step complements the leftmost 2 columns.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0011&quot;,
+ &quot;1011&quot;,
+ &quot;0101&quot;,
+ &quot;1010&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 9</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;1011&quot;,
+ &quot;0011&quot;,
+ &quot;0101&quot;,
+ &quot;1010&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0000110101010&quot;,
+ &quot;0111101010111&quot;,
+ &quot;1110110111011&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 13</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;11000000000110101101&quot;,
+ &quot;00111111011101101101&quot;,
+ &quot;00110011110111100010&quot;,
+ &quot;10011110111110000111&quot;,
+ &quot;00111010000000110111&quot;,
+ &quot;00001101011011010110&quot;,
+ &quot;11010010100100101100&quot;,
+ &quot;11101101011011000001&quot;,
+ &quot;11000010100100111001&quot;,
+ &quot;11011010100100101010&quot;,
+ &quot;10110010100100110110&quot;,
+ &quot;01100010100100111001&quot;,
+ &quot;10110010100100110011&quot;,
+ &quot;01110101011011001010&quot;,
+ &quot;01111101011011001011&quot;,
+ &quot;00001000010010101011&quot;,
+ &quot;11100101100100110001&quot;,
+ &quot;10100100111001010101&quot;,
+ &quot;11111000001010011110&quot;,
+ &quot;01110100001110011111&quot;}
+</pre></td></tr></table></td></tr><tr><td><pre>Returns: 100</pre></td></tr><tr><td><table><tr><td colspan="2">The 10x10 contiguous submatrix that corresponds to rows 5-14 and columns 5-14 is erasable.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

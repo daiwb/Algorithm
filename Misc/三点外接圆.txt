@@ -1,0 +1,29 @@
+#define INF 1000000
+/* 
+* calc the circlr from three points,input points a,b,c 
+* output o will be the center,return value be the R. 
+*/ 
+double circle(point a, point b, point c, point& o) 
+{ 
+	double A,B,C,D,E,F,G; 
+	double r; 
+
+	A=b.x-a.x; 
+	B=b.y-a.y; 
+	C=c.x-a.x; 
+	D=c.y-a.y; 
+
+	E=A*(a.x+b.x) + B*(a.y+b.y); 
+	F=C*(a.x+c.x) + D*(a.y+c.y); 
+
+	G=2.0*(A*(c.y-b.y)-B*(c.x-b.x)); 
+
+	if (fabs(G) < EPS) 
+		return INF; 
+
+	o.x=(D*E - B*F)/G; 
+	o.y=(A*F - C*E)/G; 
+
+	r=(a.x-o.x)*(a.x-o.x)+(a.y-o.y)*(a.y-o.y); 
+	return r; 
+} 

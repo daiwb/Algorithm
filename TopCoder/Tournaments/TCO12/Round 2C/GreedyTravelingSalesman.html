@@ -1,0 +1,109 @@
+<html><body bgcolor="#cccccc" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>In Digraph Country, there are N cities indexed 0 through N-1.
+Each pair of different cities is connected by two one-way roads, one in each direction.
+The lengths of roads may be asynmetric. I.e., it is possible that the road from i to j and the road from j to i have different lengths.
+<p></p>
+A travelling salesman wants to visit each city of the country in order to sell the products of his company.
+To travel as quickly as possible, he plans the following strategy.
+<ul>
+<li>First, he visits city 0.</li>
+<li> In each of the next steps, he travels to one of the cities he has not visited yet.
+When taking the decision which city to visit next, the salesman looks at roads from his current city into all unvisited cities, and picks the shortest of these roads.
+If there are multiple shortest roads, the salesman picks the one of them that leads into the city with the smallest index.</li>
+<li>He terminates the travel when he has visited all the cities. Note that he does not have to go back to city 0. </li>
+</ul>
+<p></p>
+The salesman was just about to leave for his journey when he heard a rumor.
+According to the rumor, one of the roads is just going to be reconstructed. 
+The reconstruction will be done instantly, before the salesman starts to travel.
+Still, there are two problems.
+First, the salesman has no idea which one of the roads is the one that's going to be reconstructed.
+Second, after the reconstruction the new length of the road can be an arbitrary integer between 1 and 9999, inclusive.
+The salesman is worried how will this change influence his travels in the worst case.
+<p></p>
+You are given the length of the roads in four separate vector &lt;string&gt;s.
+<b>thousands</b> gives the digit in the thousands place of the length of each road,
+<b>hundreds</b> gives the digit in the hundreds place,
+<b>tens</b> gives the digit in the tens place, and <b>ones</b> gives the digit in the ones place.
+In each of these vector &lt;string&gt;s, the j-th character of the i-th element represents the length of the road from city i to city j.
+So, for example, if <b>thousands</b>[3][5]='1', <b>hundreds</b>[3][5]='0', <b>tens</b>[3][5]='4', and <b>ones</b>[3][5]='7', the road from city 3 to city 5 has length 1047.
+<p></p>
+Return the distance the salesman will travel in the worst possible case, given that the length of any single road may change.
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>GreedyTravelingSalesman</td></tr><tr><td>Method:</td><td>worstDistance</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;, vector &lt;string&gt;, vector &lt;string&gt;, vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int worstDistance(vector &lt;string&gt; thousands, vector &lt;string&gt; hundreds, vector &lt;string&gt; tens, vector &lt;string&gt; ones)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>thousands</b> will contain between 2 and 30 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>thousands</b> will contain N characters, where N is the number of elements in <b>thousands</b>.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>thousands</b> will contain only digits ('0' - '9').</td></tr><tr><td align="center" valign="top">-</td><td><b>hundreds</b>, <b>tens</b> and <b>ones</b> will each contain N elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>hundreds</b>, <b>tens</b> and <b>ones</b> will contain N characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>hundreds</b>, <b>tens</b> and <b>ones</b> will contain only digits ('0' - '9').</td></tr><tr><td align="center" valign="top">-</td><td>The i-th character of the i-th element of <b>thousands</b>, <b>hundreds</b>, <b>tens</b> and <b>ones</b> will be '0'.</td></tr><tr><td align="center" valign="top">-</td><td>The length of each road represented by <b>thousands</b>, <b>hundreds</b>, <b>tens</b> and <b>ones</b> is strictly positive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;055&quot;, &quot;505&quot;, &quot;550&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;000&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;000&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;000&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 14999</pre></td></tr><tr><td><table><tr><td colspan="2">Every pair of two cities is connected by a road with length 5000. The travel length can reach 14999, for example, if the road from 1 to 2 is reconstructed and its new length is 9999.
+<br></br>
+<br></br>
+<img src="http://community.topcoder.com/contest/problem/GreedyTravelingSalesman/fig0.png"></img>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;018&quot;, &quot;101&quot;, &quot;990&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;990&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;990&quot;}</pre></td></tr><tr><td><pre>{&quot;000&quot;, &quot;000&quot;, &quot;990&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 17999</pre></td></tr><tr><td><table><tr><td colspan="2">One of the worst situations for the salesman is if the road from 0 to 1 is reconstructed and its new length is 9999.
+After this change, the salesman's path becomes 0 -> 2 -> 1. The total distance is 8000 + 9999 = 17999.
+<br></br>
+<br></br>
+<img src="http://community.topcoder.com/contest/problem/GreedyTravelingSalesman/fig1.png"></img>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;00888&quot;, &quot;00999&quot;, &quot;00099&quot;, &quot;00009&quot;, &quot;00000&quot;}
+</pre></td></tr><tr><td><pre>{&quot;00000&quot;, &quot;00999&quot;, &quot;00099&quot;, &quot;00009&quot;, &quot;00000&quot;}
+</pre></td></tr><tr><td><pre>{&quot;00000&quot;, &quot;10999&quot;, &quot;11099&quot;, &quot;11109&quot;, &quot;11110&quot;}
+</pre></td></tr><tr><td><pre>{&quot;01000&quot;, &quot;00999&quot;, &quot;00099&quot;, &quot;00009&quot;, &quot;00000&quot;}
+</pre></td></tr></table></td></tr><tr><td><pre>Returns: 37997</pre></td></tr><tr><td><table><tr><td colspan="2">The worst possible case is when the length of the road from 0 to 1 is changed to 8000.
+After this change, the salesman's path becomes 0 -> 1 -> 2 -> 3 -> 4.
+<br></br>
+<br></br>
+<img src="http://community.topcoder.com/contest/problem/GreedyTravelingSalesman/fig2.png"></img>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;000000&quot;, &quot;000000&quot;, &quot;990999&quot;, &quot;999099&quot;, &quot;999909&quot;, &quot;999990&quot;}</pre></td></tr><tr><td><pre>{&quot;000000&quot;, &quot;000000&quot;, &quot;990999&quot;, &quot;999099&quot;, &quot;999909&quot;, &quot;999990&quot;}</pre></td></tr><tr><td><pre>{&quot;000000&quot;, &quot;000000&quot;, &quot;990999&quot;, &quot;999099&quot;, &quot;999909&quot;, &quot;999990&quot;}</pre></td></tr><tr><td><pre>{&quot;011111&quot;, &quot;101111&quot;, &quot;990998&quot;, &quot;999099&quot;, &quot;999809&quot;, &quot;999980&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 39994</pre></td></tr><tr><td><table><tr><td colspan="2">One of the worst possible cases is when the length of the road from 0 to 1 is changed to 2.
+<br></br>
+<br></br>
+<img src="http://community.topcoder.com/contest/problem/GreedyTravelingSalesman/fig3.png"></img>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;00&quot;, &quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;, &quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;00&quot;, &quot;00&quot;}</pre></td></tr><tr><td><pre>{&quot;01&quot;, &quot;10&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 9999</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0930&quot;, &quot;1064&quot;, &quot;0104&quot;, &quot;1070&quot;}</pre></td></tr><tr><td><pre>{&quot;0523&quot;, &quot;1062&quot;, &quot;6305&quot;, &quot;0810&quot;}</pre></td></tr><tr><td><pre>{&quot;0913&quot;, &quot;0087&quot;, &quot;3109&quot;, &quot;1500&quot;}</pre></td></tr><tr><td><pre>{&quot;0988&quot;, &quot;2030&quot;, &quot;6103&quot;, &quot;5530&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 14124</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0329&quot;, &quot;2036&quot;, &quot;2502&quot;, &quot;8970&quot;}</pre></td></tr><tr><td><pre>{&quot;0860&quot;, &quot;5007&quot;, &quot;0404&quot;, &quot;2770&quot;}</pre></td></tr><tr><td><pre>{&quot;0111&quot;, &quot;2087&quot;, &quot;2009&quot;, &quot;2670&quot;}</pre></td></tr><tr><td><pre>{&quot;0644&quot;, &quot;1094&quot;, &quot;7703&quot;, &quot;7550&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 17785</pre></td></tr><tr><td></td></tr></table></td></tr><tr><td align="center" nowrap="true">7)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;098444156277392825243100607342&quot;, &quot;200097656837707947798866622385&quot;,
+&quot;290231695687128834848596019656&quot;, &quot;407026565077650435591867333275&quot;,
+&quot;843401002617957470339040852874&quot;, &quot;349970591997218853400632158696&quot;,
+&quot;419933000593511123878416328483&quot;, &quot;696294503254214847884399055978&quot;,
+&quot;641473980706392541888675375279&quot;, &quot;936720077098054565078142449625&quot;,
+&quot;203476089500970673371115103717&quot;, &quot;511071853860312304204656816567&quot;,
+&quot;347105714685052402147763392257&quot;, &quot;125122220860203856679947732062&quot;,
+&quot;121462979669220132944063071653&quot;, &quot;928254504048223043681383050365&quot;,
+&quot;502607124708785202536036594373&quot;, &quot;793596587517012870906900400361&quot;,
+&quot;712360060935346182084840996318&quot;, &quot;761671392040312345002273366240&quot;,
+&quot;812935320276738878200716148806&quot;, &quot;228506917464479046839069740872&quot;,
+&quot;755395721473881083093906155745&quot;, &quot;192597782177910118061710039501&quot;,
+&quot;721382839206745793530453013267&quot;, &quot;076061794267810491768114700256&quot;,
+&quot;857528357758085424372388710251&quot;, &quot;173322450800442594145600093043&quot;,
+&quot;761667192345925280210514410800&quot;, &quot;521229810525064090301842864060&quot;}</pre></td></tr><tr><td><pre>{&quot;098270581534726237580246464451&quot;, &quot;108829763716747148395013332067&quot;,
+&quot;830061279541380758964430491222&quot;, &quot;431005058477371114834129826284&quot;,
+&quot;601807314489142917339949914290&quot;, &quot;330640126699733151822328009407&quot;,
+&quot;851821069798846354566780680271&quot;, &quot;648888407535627630663351884365&quot;,
+&quot;051398660825518466890170447894&quot;, &quot;631934884097214069747147155777&quot;,
+&quot;768071219404930950472885304916&quot;, &quot;924954163330715847561718395488&quot;,
+&quot;189910033179029204426829479070&quot;, &quot;960645776060701332402794474433&quot;,
+&quot;244875842263950931884758650019&quot;, &quot;528470075229660077692189442311&quot;,
+&quot;752198673046476808978058423064&quot;, &quot;899325998610605600525587569431&quot;,
+&quot;965750123741820904031880230236&quot;, &quot;121658852172052167706008445728&quot;,
+&quot;556199378085507717770434101126&quot;, &quot;864838242791403197110088834005&quot;,
+&quot;593435343245223500439707230479&quot;, &quot;622529771475840345624500421425&quot;,
+&quot;503486612623475041392122088159&quot;, &quot;518334626169655694269507400008&quot;,
+&quot;967091631529233593414345370288&quot;, &quot;300474162107271438029222620086&quot;,
+&quot;010527691044447729596127150108&quot;, &quot;742822904991333205419603623270&quot;}</pre></td></tr><tr><td><pre>{&quot;029421809872798033258029765788&quot;, &quot;705135039569772524273274786652&quot;,
+&quot;170567418260893393020344098265&quot;, &quot;401043354947659563658581268242&quot;,
+&quot;746709065616595245635350557925&quot;, &quot;739570024549618413776557843034&quot;,
+&quot;184597012262496958610853505745&quot;, &quot;689811400727818703807051112784&quot;, 
+&quot;894453010121164288965541305235&quot;, &quot;323145029073008946088869964941&quot;, 
+&quot;834269564400729646453274750586&quot;, &quot;538976762970745472202055589093&quot;, 
+&quot;765511399939087047106252621388&quot;, &quot;906733295711605356366138410423&quot;, 
+&quot;107653940551700559321642810836&quot;, &quot;428402693021051075533830345295&quot;, 
+&quot;386782660475155103347385287948&quot;, &quot;936626025836194580089064628716&quot;, 
+&quot;718522629491464055045890912121&quot;, &quot;370656945845300237607868352243&quot;, 
+&quot;951908186614186444840337711498&quot;, &quot;535178875249889835014025850038&quot;, 
+&quot;505970047705717604298603983975&quot;, &quot;484398304612602344941130624527&quot;, 
+&quot;048342694079170795987835013947&quot;, &quot;860331019262176299872846206272&quot;, 
+&quot;549663926438975145562538360932&quot;, &quot;329735455392841851511474791078&quot;, 
+&quot;711755200061373546828858448100&quot;, &quot;778808866574640894148527759780&quot;}</pre></td></tr><tr><td><pre>{&quot;050738147930236727719964251439&quot;, &quot;804492562859282318664226330103&quot;, 
+&quot;610197568193830684654773608216&quot;, &quot;279000416545607314567843085541&quot;, 
+&quot;782201171759873927350740022455&quot;, &quot;043370803444176631019883186675&quot;, 
+&quot;566092086050401228622782761449&quot;, &quot;469598907881602996036692882305&quot;, 
+&quot;116923500417992303845370254124&quot;, &quot;796876115092839169954790509461&quot;, 
+&quot;783836410405270687557924090071&quot;, &quot;095144151150833738671751747749&quot;, 
+&quot;354474585664039135189964700948&quot;, &quot;328968176148004939648962631420&quot;, 
+&quot;829651915384290848347221555092&quot;, &quot;170980383407813034573738951375&quot;, 
+&quot;728655435703349509419725538350&quot;, &quot;121896684176286430427852435647&quot;, 
+&quot;315710894574884960021671476788&quot;, &quot;592177839598531202003634382961&quot;, 
+&quot;876587919610157913350259498196&quot;, &quot;505517243779897451333006271744&quot;, 
+&quot;618607877753891664471800511372&quot;, &quot;826358757330233811836040764274&quot;, 
+&quot;206641252044293046424432092833&quot;, &quot;704519364781672964993499009545&quot;, 
+&quot;624793571592392775564426440338&quot;, &quot;571938479010503551295729304078&quot;, 
+&quot;077967252884369103891335711508&quot;, &quot;870185204806328841827105139840&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 39896</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

@@ -1,0 +1,28 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><i>NOTE: This problem statement contains images that may not display properly if viewed outside of the applet.</i><br></br>
+<br></br>
+"4Blocks" is a two player cooperative game played on a special board.  The board is a grid composed of 1x1 square cells. There are two different kinds of blocks: '1' blocks and '4' blocks.  '1' blocks are 1x1, and '4' blocks are 2x2:<br></br>
+<br></br>
+
+<center><img src="http://www.topcoder.com/contest/problem/FourBlocks/b1.png"></img></center>
+
+<br></br>
+You must place blocks on the board so that their sides are aligned to the grid lines and no two blocks overlap.  The final score is the sum of the values in each cell.  '1' blocks are worth 1 point, and '4' blocks are worth 16 points because they cover 4 cells and each cell is worth 4 points.<br></br>
+<br></br>
+Your friend has taken his turn and placed a number of '1' blocks on the board.  The current configuration is given in the vector &lt;string&gt; <b>grid</b>.  The j-th character of the i-th element of <b>grid</b> is '.' if the cell at row i, column j is empty, and '1' if your friend placed a '1' block in that cell.  It is now your turn, and you can place any number of '1' or '4' blocks on the board, but you cannot remove any of the blocks that have already been placed.  Return the maximum score that can be achieved.  For example, the following images show one possible starting state, and the optimal placement of blocks from that state:<br></br>
+<br></br>
+<img src="http://www.topcoder.com/contest/problem/FourBlocks/b2.png"></img><br></br>
+<br></br>
+
+The final score would be 4*16 + 6*1 = 70.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>FourBlocks</td></tr><tr><td>Method:</td><td>maxScore</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int maxScore(vector &lt;string&gt; grid)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>grid</b> will contain between 1 and 10 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>grid</b> will contain between 1 and 25 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>grid</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>grid</b> will contain only '.' or '1' (one).</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....1..1..&quot;,
+ &quot;..1.....1..&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 70</pre></td></tr><tr><td><table><tr><td colspan="2">This is the example from the statement.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;...1.&quot;,
+ &quot;.....&quot;,
+ &quot;.1..1&quot;,
+ &quot;.....&quot;,
+ &quot;1....&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 73</pre></td></tr><tr><td><table><tr><td colspan="2"><img src="http://www.topcoder.com/contest/problem/FourBlocks/b3.png"></img></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;...1.&quot;,
+ &quot;.1...&quot;,
+ &quot;..1.1&quot;,
+ &quot;1....&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 20</pre></td></tr><tr><td><table><tr><td colspan="2">It is not possible to place any '4' bricks in this setup.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....1...&quot;,
+ &quot;.....1...&quot;,
+ &quot;111111111&quot;,
+ &quot;.....1...&quot;,
+ &quot;.....1...&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 117</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

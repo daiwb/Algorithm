@@ -1,0 +1,29 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+John is obsessed with security.
+Recently he bought a new electronic lock.
+It is protected by a password containing <b>n</b> digits, where each digit is either zero or one.
+John decides to change the password every day.
+On the first day, the password is all zeroes.
+On each day that follows, he will select one or more digits that all have the same value and change their values (so zeroes become ones, and ones become zeroes).
+He must select the digits according to the following rules:
+<ol>
+<li>During the first 2^<b>n</b> days, he must never use the same password twice.</li>
+<li>Each new password must come as early as possible alphabetically while not violating rule 1.</li>
+</ol>
+</p>
+
+<p>
+For example, if <b>n</b> is 2, the password on the first day is "00".
+The next day, he can change one or both 0's to get "01", "10" or "11".
+Of these possibilities, "01" comes earliest alphabetically.
+The next day, he can change either the 0 or the 1 to get "11" or "00".
+He can't choose "00" because it was already used, so he chooses "11".
+The next day, he can change one or both 1's to get "10", "01" or "00".
+He has already used "01" and "00", so he must choose "10".
+</p>
+
+<p>
+Given ints <b>n</b> and <b>k</b>, return the password that comes latest alphabetically during the first <b>k</b> days.
+</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TheLockDivOne</td></tr><tr><td>Method:</td><td>password</td></tr><tr><td>Parameters:</td><td>int, long long</td></tr><tr><td>Returns:</td><td>string</td></tr><tr><td>Method signature:</td><td>string password(int n, long long k)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>If A and B are two strings of the same length, then A comes earlier alphabetically than B if it contains a smaller character at the first position where the strings differ.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>n</b> will be between 1 and 50, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>k</b> will be between 1 and 2^<b>n</b>, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>2</pre></td></tr><tr><td><pre>4</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;11&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">This is the example from the statement.
+The password sequence is the following - "00", "01", "11", "10".</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>3</pre></td></tr><tr><td><pre>8</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;111&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">"000", "001", "011", "010", "110", "100", "101", "111".</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>4</pre></td></tr><tr><td><pre>6</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;0110&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>10</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;0000000000&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>7</pre></td></tr><tr><td><pre>100</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;1111110&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

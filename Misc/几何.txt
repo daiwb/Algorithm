@@ -1,0 +1,62 @@
+//注意一条线段的某一个端点在另一条线段上不算相交
+//若要判断以上情况将两个multi的乘积改成>=0即可
+
+#define MAXN 1000
+#define ZERO(a) (fabs(a) < 1e-8)
+
+class pos{
+public:
+	double x;
+	double y;
+	pos(double xx, double yy) {
+		x = xx, y = yy;
+	};
+	pos &operator = (const pos &cc){
+		x = cc.x;
+		y = cc.y;
+		return *this;
+	}
+};
+
+class line{
+public:
+	pos a;
+	pos b;
+	line(pos aa, pos bb) {
+		a = aa, b = bb;
+	}
+};
+
+double multi(pos p1, pos p2, pos p0){
+	return (p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y);
+}
+
+double area(pos p1, pos p2, pos p3) {
+	return fabs(multi(p1, p2, p3)) / 2;
+}
+
+double max(double a,double b){
+	return a > b ? a : b;
+}
+
+double min(double a,double b){
+	return a < b ? a : b;
+}
+
+bool across(line u,line v){
+	if(
+		(max(u.a.x, u.b.x) >= min(v.a.x, v.b.x)) &&
+		(max(v.a.x, v.b.x) >= min(u.a.x, u.b.x)) &&
+		(max(u.a.y, u.b.y) >= min(v.a.y, v.b.y)) &&
+		(max(v.a.y, v.b.y) >= min(u.a.y, u.b.y)) &&
+		(multi(v.a, u.b, u.a) * multi(u.b, v.b, u.a) > 0) &&
+		(multi(u.a, v.b, v.a) * multi(v.b, u.b, v.a) > 0)
+	) return 1;
+	else return 0;
+}
+
+bool online(line l, pos p) {
+	pos a = l.a, b = l.b;
+	if (ZERO(area(a, b, p)) && p.x >= min(a.x, b.x) && p.x <= max(a.x, b.x) && p.y >= min(a.y, b.y) && p.y <= max(a.y, b.y)) return 1;
+	return 0;
+}

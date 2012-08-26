@@ -1,0 +1,64 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+In the attic of your house you found an M&times;N board, divided into MN unit squares. Some of the squares are black and the others are white. You decided that you will make a chessboard out of the board by cutting out an 8&times;8 region and throwing away the rest of the board.
+</p>
+
+<p>
+The only problem is that the board is not painted in the alternate black/white pattern you need for the chessboard. Thus after you cut out the 8&times;8 chessboard, you will have to repaint some of the squares. Of course, you can pick which 8&times;8 region to cut out.
+</p>
+
+<p>
+You are given the current colors of the squares as a vector &lt;string&gt; <b>board</b>. Character c in element r of <b>board</b> is '<tt>W</tt>' if the cell at coordinates (r,c) is white, and '<tt>B</tt>' if it is black. Your task is to find the minimum number of squares you will need to repaint after cutting out the 8&times;8 region.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>RepaintTheChessboard</td></tr><tr><td>Method:</td><td>minimumChanges</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int minimumChanges(vector &lt;string&gt; board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>On a correctly colored chessboard each square is either black or white, and no two squares that share a side have the same color.  <br></br> (Note that according to this definition there are two valid colorings: one with a white, the other with a black square in the upper left corner.)</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 8 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain between 8 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>board</b> will have the same length.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in each element of <b>board</b> will be either '<tt>B</tt>' or '<tt>W</tt>'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;}
+</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">This is a perfect chessboard, no repainting (and no cutting) necessary.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBBBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">This is almost a perfect chessboard, except for one square.
+<br></br>
+(Using 0-based indices, the incorrectly colored square is element 3, character 3 of <b>board</b>.)</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBB&quot;,
+ &quot;BBBBBBBBBBBBBBBBBBBBBBW&quot;}
+</pre></td></tr></table></td></tr><tr><td><pre>Returns: 31</pre></td></tr><tr><td><table><tr><td colspan="2">If we take the 8&times;8 piece in the lower right corner, we will have one white square, and we will only need 31 more.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;BBBBBBBBBB&quot;,
+ &quot;BBWBWBWBWB&quot;,
+ &quot;BWBWBWBWBB&quot;,
+ &quot;BBWBWBWBWB&quot;,
+ &quot;BWBWBWBWBB&quot;,
+ &quot;BBWBWBWBWB&quot;,
+ &quot;BWBWBWBWBB&quot;,
+ &quot;BBWBWBWBWB&quot;,
+ &quot;BWBWBWBWBB&quot;,
+ &quot;BBBBBBBBBB&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">Here we have a perfect chessboard in the middle of the given board.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBBBWBW&quot;,
+ &quot;WBWBWBWB&quot;,
+ &quot;BWBWBWBW&quot;,
+ &quot;WBWBWWWB&quot;,
+ &quot;BWBWBWBW&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">For this board the minimum number of changes is 2: We need to change one black square into a white one, and one white square into a black one.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;BWWBWWBWWBWW&quot;,
+ &quot;BWWBWBBWWBWW&quot;,
+ &quot;WBWWBWBBWWBW&quot;,
+ &quot;BWWBWBBWWBWW&quot;,
+ &quot;WBWWBWBBWWBW&quot;,
+ &quot;BWWBWBBWWBWW&quot;,
+ &quot;WBWWBWBBWWBW&quot;,
+ &quot;BWWBWBWWWBWW&quot;,
+ &quot;WBWWBWBBWWBW&quot;,
+ &quot;BWWBWBBWWBWW&quot;,
+ &quot;WBWWBWBBWWBW&quot;}
+</pre></td></tr></table></td></tr><tr><td><pre>Returns: 15</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

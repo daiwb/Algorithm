@@ -1,0 +1,25 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+You have a very simple computer whose memory consists only of two registers X and Y. Each of them can store a positive integer. The computer is so simple that it only has two different instructions (between brackets is the name of each instruction):
+</p><pre>
+[X] X := X + Y
+[Y] Y := X + Y
+</pre><p>
+As you may have imagined, both instructions compute the sum of both registers and store the result in one of them, overwriting its previous content. A program for this computer is simply a sequential list of zero or more instructions. When a program starts in this computer, both registers are initialized to 1. For instance, if the program is "<tt>XXYYX</tt>" then the following happens:
+</p><pre>
+  X | Y | ins | execute
+----+---+-----+------------
+  1 | 1 | [X] | X := X + Y
+----+---+-----+------------
+  2 | 1 | [X] | X := X + Y
+----+---+-----+------------
+  3 | 1 | [Y] | Y := X + Y
+----+---+-----+------------
+  3 | 4 | [Y] | Y := X + Y
+----+---+-----+------------
+  3 | 7 | [X] | X := X + Y
+----+---+-----+------------
+ 10 | 7 |
+</pre><p>
+You will be given an int <b>r</b>. Return the shortest program for the described computer that makes register X end with value <b>r</b>. Register Y may contain any value. If there are several such programs, return the one that comes earliest lexicographically.
+</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TwoRegisters</td></tr><tr><td>Method:</td><td>minProg</td></tr><tr><td>Parameters:</td><td>int</td></tr><tr><td>Returns:</td><td>string</td></tr><tr><td>Method signature:</td><td>string minProg(int r)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>A string comes lexicographically earlier than another one of the same length if and only if it contains a letter closer the beginning of the alphabet in the first position at which they differ.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>r</b> will be between 1 and 1000000 (10<sup>6</sup>), inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>10</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;XXYYX&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">The example in the problem statement.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;XX&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>20</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;XYYYYXX&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>34</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;XYXYXYX&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

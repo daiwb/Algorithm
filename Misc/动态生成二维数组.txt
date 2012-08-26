@@ -1,0 +1,3 @@
+double **m_nA;
+m_nA = new double*[M];
+for (int i = 0; i < M; i ++) m_nA[i] = new double[N];

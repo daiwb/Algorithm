@@ -1,0 +1,33 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>The Towers of Hanoi puzzle consists of 3 pegs and a number of disks of distinct radii.  The 3 pegs are the source, spare, and target.  Initially, all disks are on the source peg, in ascending order by radius from top to bottom.  The goal is to move all disks to the target peg, subject to the following rules:<ul>
+<li>Only one disk may be moved at a time.</li>
+<li>No disk may be placed on top of a smaller disk.</li>
+<li>A move consists of taking the highest disk from one peg, and placing it onto another peg above any disks already on that peg.</li>
+</ul>
+</p>
+
+<p>Dave and Earl are each solving a Towers of Hanoi puzzle with <b>N</b> disks.  Dave makes as few moves as possible, solving the puzzle in only 2^N-1 moves.  Earl, on the other hand, encounters every possible configuration of disks exactly once during the course of solving it, thereby requiring 3^N-1 moves to solve it.  Pseudocode for their respective solutions are:</p>
+<pre>
+solve_Dave(source, target, spare, N)
+{
+	if(N>0)
+	{
+		solve_Dave(source, spare, target, N-1)
+		move a disk from source to target
+		solve_Dave(spare, target, source, N-1)
+	}
+}
+
+solve_Earl(source, target, spare, N)
+{
+	if(N>0)
+	{
+		solve_Earl(source, target, spare, N-1)
+		move a disk from source to spare
+		solve_Earl(target, source, spare, N-1)
+		move a disk from spare to target
+		solve_Earl(source, target, spare, N-1)
+	}
+}
+</pre>
+<p>Given <b>N</b>, and the number of moves Dave has made toward the solution, return the number of moves Earl must make in order to reach the same configuration of disks as Dave.</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>HanoiGoodAndBad</td></tr><tr><td>Method:</td><td>moves</td></tr><tr><td>Parameters:</td><td>int, int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int moves(int N, int Dave)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>N</b> will be between 1 and 19, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>Dave</b> will be bewteen 0 and 2^N-1, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>3</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">Dave begins by moving a disk from the source peg to the target peg.  Earl begins by moving a disk from the source peg to the spare peg, then to the target peg.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>4</pre></td></tr><tr><td><pre>15</pre></td></tr></table></td></tr><tr><td><pre>Returns: 80</pre></td></tr><tr><td><table><tr><td colspan="2">It takes Dave 15 moves to completely solve the puzzle with 4 disks, and Earl 80 moves.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>9</pre></td></tr><tr><td><pre>265</pre></td></tr></table></td></tr><tr><td><pre>Returns: 16418</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

@@ -1,0 +1,39 @@
+int comb(int n,int m){
+    int ret=1,i;
+    m=m<(n-m)?m:(n-m);
+    for (i=n-m+1;i<=n;ret*=(i++));
+    for (i=1;i<=m;ret/=(i++));
+    return m<0?0:ret;
+}
+
+int comb2num(int n,int m,int *c){
+    int ret=comb(n,m),i;
+    for (i=0;i<m;i++)
+        ret-=comb(n-c[i],m-i);
+    return ret;
+}
+
+void num2comb(int n,int m,int* c,int t){
+    int i,j=1,k;
+    for (i=0;i<m;c[i++]=j++)
+        for (;t>(k=comb(n-j,m-i-1));t-=k,j++);
+}
+
+int perm2num(int n,int *p){
+    int i,j,ret=0,k=1;
+    for (i=n-2;i>=0;k*=n-(i--))
+        for (j=i+1;j<n;j++)
+            if (p[j]<p[i])
+                ret+=k;
+    return ret;
+}
+
+void num2perm(int n,int *p,int t){
+    int i,j;
+    for (i=n-1;i>=0;i--)
+        p[i]=t%(n-i),t/=n-i;
+    for (i=n-1;i;i--)
+        for (j=i-1;j>=0;j--)
+            if (p[j]<=p[i])
+                p[i]++;
+}

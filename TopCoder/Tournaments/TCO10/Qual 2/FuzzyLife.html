@@ -1,0 +1,38 @@
+<html><body bgcolor="#ffffff" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>The Game of Life is a simulation which takes an initial state and shows its evolution over time.  The simulation takes place on an infinite 2-dimensional grid of cells, where each cell is either live or dead.  Each cell has exactly 8 neighbors (2 horizontal, 2 vertical, and 4 diagonal).  Once the initial layout of live and dead cells is known, the evolution of the grid happens step by step.  On each step, the state of the cells changes in the following way:
+<ul><li>
+Each live cell with less than 2 or more than 3 live neighbors becomes dead.
+</li><li>
+Each dead cell with exactly 3 live neighbors becomes live.
+</li><li>
+All other cells remain the same.
+</li></ul>
+All cells change their states simultaneously, so for each cell, the number of live neighbors is calculated before any changes are performed.
+<br></br>
+You are given a vector &lt;string&gt; <b>grid</b> which describes the initial layout of cells on a rectangular section of the grid.  Unlike the classic game, in which the initial states of all the cells are known, <b>grid</b> contains cells of three types: live, dead and unknown, denoted by '1' (one), '0' (zero) and '?', respectively.  The j-th character of the i-th element of <b>grid</b> describes the cell at row i, column j of the rectangular section.  No cell will have more than one neighbor of type '?'.  All cells outside of the area described by <b>grid</b> are initially dead.
+<br></br>
+Your task is to replace the unknown cells in the initial layout with live or dead cells in such a way that the total number of live cells after one step is maximized.  Return the maximal possible number of live cells after one step.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>FuzzyLife</td></tr><tr><td>Method:</td><td>survivingCells</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int survivingCells(vector &lt;string&gt; grid)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>grid</b> will contain between 2 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>grid</b> will contain between 2 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>grid</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>grid</b> will be '0', '1' or '?'.</td></tr><tr><td align="center" valign="top">-</td><td>No cell will have more than one neighboring cell of type '?'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;011&quot;,
+ &quot;0?1&quot;,
+ &quot;100&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 5</pre></td></tr><tr><td><table><tr><td colspan="2">There is only one unknown cell on the board, and two choices of filling it:
+<pre>
+011    011     011    011
+001 -> 001  or 011 -> 101
+100    000     100    010
+</pre>
+The first choice produces 3 live cells, and the second one produces 5 live cells.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;101&quot;,
+ &quot;0?0&quot;,
+ &quot;101&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">Again only one unknown cell and two choices:
+<pre>
+101    000     101    010
+000 -> 000  or 010 -> 101
+101    000     101    010
+</pre></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;11&quot;,
+ &quot;11&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 4</pre></td></tr><tr><td><table><tr><td colspan="2">It is possible to have no unknown cells.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;111&quot;,
+ &quot;1?1&quot;,
+ &quot;111&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2">The number of live cells doesn't depend on the choice of the unknown cell. Remember that the cells outside of the described part of the grid can turn live as well.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;?11?&quot;,
+ &quot;0110&quot;,
+ &quot;1001&quot;,
+ &quot;?11?&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 12</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;00100&quot;,
+ &quot;01010&quot;,
+ &quot;10?01&quot;,
+ &quot;01010&quot;,
+ &quot;00100&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 12</pre></td></tr><tr><td><table><tr><td colspan="2">Choosing '0' as the value of an unknown cell is sometimes better.</td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

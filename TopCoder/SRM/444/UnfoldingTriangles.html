@@ -1,0 +1,39 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><i>NOTE: This problem statement contains images that may not display properly if viewed outside of the applet.</i>
+<br></br>
+<br></br>
+You are given a white rectangular <b>grid</b> made up of square cells.  Some cells contain black squares, and some contain black squares that have been folded in half to form right triangles, such that one of their sides matches the grid line to the right of the cell and another side of the triangle matches the grid line to the bottom of the cell.  At most <b>unfoldLimit</b> of these triangles can be unfolded to become black squares. However, black squares cannot be folded to become triangles.<br></br>
+<br></br>
+We are interested in forming the largest possible proper black triangle in the grid using the aforementioned operations.  A black triangle is considered proper within a grid configuration if no other black shape shares a line segment with it.  However, black shapes may still share one or more points with the triangle. The size of a triangle is defined as the number of grid cells that are currently occupied by the triangle.<br></br>
+<br></br>
+The <b>grid</b> will be given as a vector &lt;string&gt;, where the j-th character of the i-th element represents the cell at row i, column j.  '.' represents an empty cell, '#' represents a cell containing a black square, and '/' represents a cell containing a black triangle.  Return the largest possible size for a proper triangle that can be formed in the given grid by unfolding at most <b>unfoldLimit</b> triangles. In case it is not possible to form a proper black triangle in the grid, return -1.<br></br>
+<br></br>
+For example, consider the following input grid:<br></br>
+<br></br>
+<br></br>
+<img src="http://www.topcoder.com/contest/problem/UnfoldingTriangles/tt1.png"></img>
+<br></br>
+<br></br>
+If <b>unfoldLimit</b> is greater than or equal to 3, the largest possible proper triangle size is 10:<br></br>
+<pre><img src="http://www.topcoder.com/contest/problem/UnfoldingTriangles/tt21.png"></img>   <img src="http://www.topcoder.com/contest/problem/UnfoldingTriangles/tt22.png"></img></pre>
+<br></br>
+<br></br>
+<br></br>
+If <b>unfoldLimit</b> is 2, the largest possible proper triangle size is 3:<br></br>
+<pre><img src="http://www.topcoder.com/contest/problem/UnfoldingTriangles/tt31.png"></img>   <img src="http://www.topcoder.com/contest/problem/UnfoldingTriangles/tt32.png"></img></pre>
+<br></br>Larger black triangles are possible, but they would not be proper triangles.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>UnfoldingTriangles</td></tr><tr><td>Method:</td><td>solve</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;, int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int solve(vector &lt;string&gt; grid, int unfoldLimit)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>grid</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>grid</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>grid</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>grid</b> will be '.', '#' or '/'.</td></tr><tr><td align="center" valign="top">-</td><td><b>unfoldLimit</b> will be between 1 and 2500, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.../&quot;,
+ &quot;../#&quot;,
+ &quot;./#/&quot;,
+ &quot;/#//&quot;}</pre></td></tr><tr><td><pre>4</pre></td></tr></table></td></tr><tr><td><pre>Returns: 10</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.../&quot;,
+ &quot;../#&quot;,
+ &quot;./#/&quot;,
+ &quot;/#//&quot;}</pre></td></tr><tr><td><pre>2</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2">Examples 1 and 0 were explained in the problem statement.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;////&quot;,
+ &quot;////&quot;,
+ &quot;////&quot;,
+ &quot;////&quot;}</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....#...&quot;,
+ &quot;....###..&quot;}</pre></td></tr><tr><td><pre>10</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;#//#&quot;,
+ &quot;#//#&quot;,
+ &quot;####&quot;,
+ &quot;///#&quot;}</pre></td></tr><tr><td><pre>4</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.../.../&quot;,
+ &quot;../#..//&quot;,
+ &quot;./.#.///&quot;,
+ &quot;/###....&quot;}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
