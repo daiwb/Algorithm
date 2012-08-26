@@ -1,6 +1,3 @@
-// BEGIN CUT HERE
-
-// END CUT HERE
 #include <algorithm>
 #include <iostream>
 #include <sstream>
