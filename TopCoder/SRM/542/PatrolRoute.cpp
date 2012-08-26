@@ -113,24 +113,6 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
 }
 // END CUT HERE
 
-// BEGIN CUT HERE
-int s2i(string s) {
-    stringstream ss;
-    ss << s;
-    int res;
-    ss >> res;
-    return res;
-}
-
-string i2s(int n) {
-    stringstream ss;
-    ss << n;
-    string res;
-    ss >> res;
-    return res;
-}
-// END CUT HERE
-
 #define MOD 1000000007
 
 class PatrolRoute {
