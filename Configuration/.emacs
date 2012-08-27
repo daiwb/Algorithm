@@ -22,21 +22,14 @@
 (global-set-key "\C-m" 'reindent-then-newline-and-indent)
 (setq indent-tabs-mode nil)
 (setq standard-indent 4)
-
-'(set-default-font "-outline-Courier New-normal-r-normal-normal-12-90-96-96-c-*-iso8859-1")
-'(set-default-font "-outline-Envy Code R VS-normal-r-normal-normal-15-112-96-96-c-*-iso8859-1")
-'(set-default-font "-outline-Consolas-normal-r-normal-normal-15-112-96-96-c-*-iso8859-1")
-'(set-default-font "-outline-Monaco-normal-r-normal-normal-13-97-96-96-c-*-iso8859-1")
-'(set-default-font "-outline-Courier New-normal-r-normal-normal-12-90-96-96-c-*-iso8859-1")
 (set-default-font "-outline-Consolas-normal-r-normal-normal-15-112-96-96-c-*-iso8859-1")
-'(set-default-font "-outline-Lucida Sans Typewriter-normal-r-normal-normal-12-90-96-96-c-*-iso8859-1")
 
-(add-to-list 'load-path (expand-file-name "D:\.emacs.d"))
-(require 'color-theme)
-(color-theme-initialize)
-'(color-theme-gnome2)
-'(color-theme-lethe)
-'(color-theme-gruber-darker)
+(load-theme 'tango-dark)
+
+'(add-to-list 'load-path (expand-file-name "D:\.emacs.d"))
+'(require 'color-theme)
+'(color-theme-initialize)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -65,16 +58,3 @@
 (autoload 'python-mode "python-mode" "Major mode for editing Python code." t)
 (setq auto-mode-alist
 (append '(("\\.py$" . python-mode)) auto-mode-alist))
-
-'Tabbar
-(require 'tabbar) 
-(tabbar-mode)
-(define-prefix-command 'lwindow-map)
-(global-set-key (kbd "<M-up>") 'tabbar-backward-group)
-(global-set-key (kbd "<M-down>") 'tabbar-forward-group)
-(global-set-key (kbd "<M-left>") 'tabbar-backward) 
-(global-set-key (kbd "<M-right>") 'tabbar-forward)
-
-(custom-set-variables
- '(speedbar-show-unknown-files t)
-)
