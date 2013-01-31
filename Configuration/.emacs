@@ -27,8 +27,6 @@
 (load-theme 'tango-dark)
 
 '(add-to-list 'load-path (expand-file-name "D:\.emacs.d"))
-'(require 'color-theme)
-'(color-theme-initialize)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
