@@ -1,0 +1,33 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>John has a sequence of digits.
+He and Brus will now play with the sequence.
+<br></br><br></br>
+
+First, John will repeat the following operation <b>k</b> times:
+He will choose two different positions in the sequence, and swap the elements at those positions.
+(John makes each choice uniformly at random.
+That is, each time John chooses two positions, each pair of different positions has the same probability of being chosen.)
+<br></br><br></br>
+
+Afterwards, Brus will randomly choose a non-empty contiguous subsequence of John's sequence.
+He will compute the sum of all elements in the chosen subsequence and he will write it down on a piece of paper.
+(Brus also makes his choice uniformly at random.
+That is, each possible contiguous subsequence has the same probability of being chosen.)
+<br></br><br></br>
+
+You are given a vector &lt;string&gt; <b>sequence</b>.
+Concatenate all elements of <b>sequence</b> to get the string s.
+For each i, the i-th character of s is a digit ('0'-'9') representing the digit at index i in John's original sequence.
+<br></br><br></br>
+
+Return the expected value of the sum Brus writes down.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TheSwapsDivOne</td></tr><tr><td>Method:</td><td>find</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;, int</td></tr><tr><td>Returns:</td><td>double</td></tr><tr><td>Method signature:</td><td>double find(vector &lt;string&gt; sequence, int k)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td>&#160;&#160;&#160;&#160;</td></tr><tr><td></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The returned value must be accurate to within a relative or absolute value of 1E-9.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>sequence</b> will contain between 2 and 47 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>sequence</b> will contain between 1 and 47 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>sequence</b> will consist of only decimal digits ('0'-'9').</td></tr><tr><td align="center" valign="top">-</td><td><b>k</b> will be between 1 and 1,000,000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;4&quot;, &quot;77&quot;}</pre></td></tr><tr><td><pre>1</pre></td></tr></table></td></tr><tr><td><pre>Returns: 10.0</pre></td></tr><tr><td><table><tr><td colspan="2">There are three equally likely swaps John might make.
+If the first two elements are swapped, John will get the sequence {7,4,7}.
+Then Brus chooses one of the six possible subsequences.
+Their sums are 7, 4, 7, 11, 11 and 18.
+Thus the expected value is (7 + 4 + 7 + 11 + 11 + 18)/6 = 29/3.
+<br></br><br></br>
+If the first and the last elements are swapped, the sequence becomes {7,7,4}, and the subsequence sums are 7, 7, 4, 14, 11 and 18.
+The expected value in this case is (7 + 7 + 4 + 14 + 11 + 18)/6 = 61/6.
+<br></br><br></br>
+When the last two elements are swapped, the sequence doesn't change and the expected value is equal to 61/6 as well.
+Finally, the overall expected value is equal to (29/3 + 61/6 + 61/6)/3 = 10.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;4&quot;, &quot;77&quot;}</pre></td></tr><tr><td><pre>47</pre></td></tr></table></td></tr><tr><td><pre>Returns: 10.0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;}</pre></td></tr><tr><td><pre>1000000</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3.0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;572685085149095989026478064633266980348504469&quot;, &quot;19720257361&quot;, &quot;9&quot;, &quot;69&quot;}</pre></td></tr><tr><td><pre>7</pre></td></tr></table></td></tr><tr><td><pre>Returns: 98.3238536775161</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
