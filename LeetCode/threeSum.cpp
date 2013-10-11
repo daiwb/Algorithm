@@ -18,30 +18,25 @@ public:
         vector<vector<int> > ret;
         int n = num.size();
         REP(i,n) {
+            if (i != 0 && num[i] == num[i - 1]) continue;
             int lt = i + 1;
             int rt = n - 1;
             while (lt < rt) {
                 if (num[lt] + num[rt] == -num[i]) {
                     vector<int> tmp;
+                    tmp.push_back(num[i]);
                     tmp.push_back(num[lt]);
                     tmp.push_back(num[rt]);
-                    tmp.push_back(num[i]);
-                    sort(tmp.begin(), tmp.end());
                     ret.push_back(tmp);
                     ++lt;
-                    if (lt == i) ++lt;
                     --rt;
-                    if (rt == i) --rt;
                 } else if (num[lt] + num[rt] < -num[i]) {
                     ++lt;
-                    if (lt == i) ++lt;
                 } else {
                     --rt;
-                    if (rt == i) --rt;
                 }
             }
         }
-        sort(ret.begin(), ret.end());
         ret.erase(unique(ret.begin(), ret.end()), ret.end());
         return ret;
     }
