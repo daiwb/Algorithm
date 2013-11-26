@@ -26,15 +26,13 @@ void run() {
             if (w >= K || l >= K) continue;
             
             FOR(p,0,1000) {
-                double tmp = mm[w][l][p] * (p * ps + (1000 - p) * pr) / 1000;
-                mm[w + 1][l][min(1000, p + pui)] += tmp * pw;
-                mm[w + 1][l][p] += tmp * (1 - pw);
-            }
+                double tmp = (p * ps + (1000 - p) * pr) / 1000;
 
-            FOR(p,0,1000) {
-                double tmp = mm[w][l][p] * (p * (1 - ps) + (1000 - p) * (1 - pr)) / 1000;
-                mm[w][l + 1][max(0, p - pdi)] += tmp * pl;
-                mm[w][l + 1][p] += tmp * (1 - pl);
+                mm[w + 1][l][min(1000, p + pui)] += mm[w][l][p] * tmp * pw;
+                mm[w + 1][l][p] += mm[w][l][p] * tmp * (1 - pw);
+
+                mm[w][l + 1][max(0, p - pdi)] += mm[w][l][p] * (1 - tmp) * pl;
+                mm[w][l + 1][p] += mm[w][l][p] * (1 - tmp) * (1 - pl);
             }
         }
     }
