@@ -10,9 +10,9 @@ using namespace std;
 #define FOR(i,a,b) for(int i=(a);i<=(b);++i)
 
 int K;
-double ps, pr, pi, pu, pw, pd, pl;
+long double ps, pr, pi, pu, pw, pd, pl;
 int pii, pui, pdi;
-double mm[105][105][1005];
+long double mm[105][105][1005];
 
 void run() {
     cin >> K;
@@ -26,7 +26,7 @@ void run() {
             if (w >= K || l >= K) continue;
             
             FOR(p,0,1000) {
-                double tmp = (p * ps + (1000 - p) * pr) / 1000;
+                long double tmp = (p * ps + (1000 - p) * pr) / 1000;
 
                 mm[w + 1][l][min(1000, p + pui)] += mm[w][l][p] * tmp * pw;
                 mm[w + 1][l][p] += mm[w][l][p] * tmp * (1 - pw);
@@ -37,7 +37,7 @@ void run() {
         }
     }
 
-    double ret = 0.0;
+    long double ret = 0.0;
     FOR(i,0,K-1) {
         FOR(j,0,1000) {
             ret += mm[K][i][j];
