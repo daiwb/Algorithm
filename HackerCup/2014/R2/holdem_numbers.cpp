@@ -56,13 +56,13 @@ int doit(int n, int c1, int c2) {
                 if (b3 == c1 || b3 == c2) continue;
 
                 int m1 = min(b1 - 1, s - b1 - (int)(b1 > c2));
-                m1 -= (int)(m1 >= c1) + (int)(m1 >= c2);
+                m1 -= (int)(m1 >= c1);
 
                 int m2 = min(b2 - 1, s - b2 - (int)(b2 > c2));
-                m2 -= (int)(m2 >= c1) + (int)(m2 >= c2) + (int)(m2 >= b1);
+                m2 -= (int)(m2 >= c1) + (int)(m2 >= b1);
 
                 int m3 = min(b3 - 1, s - b3 - (int)(b3 > c2));
-                m3 -= (int)(m3 >= c1) + (int)(m3 >= c2) + (int)(m3 >= b1) + (int)(m3 >= b2);
+                m3 -= (int)(m3 >= c1) + (int)(m3 >= b1) + (int)(m3 >= b2);
 
                 if (m1 > m2) swap(m1, m2);
                 if (m1 > m3) swap(m1, m3);
