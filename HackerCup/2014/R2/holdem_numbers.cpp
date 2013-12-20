@@ -25,8 +25,9 @@ using namespace std;
 #define INF 1000000000;
 typedef long long LL;
 
-int mm[105][105][105];
 int N, H, C1, C2;
+
+vector<pair<int, int> > ans;
 
 void showtime() {
     time_t now = time(0);
@@ -42,10 +43,7 @@ void showtime() {
    cout << "The UTC date and time is:"<< dt << endl;
 }
 
-int doit(int n, int c1, int c2) {
-    int& ret = mm[n][c1][c2];
-    if (ret != -1) return ret;
-
+int isok(int n, int c1, int c2) {
     LL sum = 0;
     int s = c1 + c2;
     FOR(b1,1,n) {
@@ -77,18 +75,43 @@ int doit(int n, int c1, int c2) {
     REP(i,6) total *= (n - 2 - i);
     total /= 6 * 8;
     
-    if (sum * 4 > total) ret = 1;
-    else ret = 0;
+    if (sum * 4 > total) return 1;
+    else return 0;
+}
 
-    return ret;
+void doit(int n) {
+    if (ans[n].first != -1) return;
+
+    vector<pair<int, int> > all;
+    FOR(s,3,n+n-1) {
+        RFOR(i,(s-1)/2,max(1,s-n)) {
+            all.push_back(make_pair(i, s - i));
+        }
+    }
+
+    int lt = 0, rt = all.size() - 1;
+    while (lt < rt) {
+        int mt = (lt + rt) >> 1;
+        if (isok(N, all[mt].first, all[mt].second)) rt = mt;
+        else lt = mt + 1;
+    }
+
+    ans[n] = make_pair(all[lt].first, all[lt].second);
+}
+
+bool cmp(int a, int b, int c, int d) {
+    if (a + b > c + d) return true;
+    if (a + b < c + d) return false;
+    return b >= d;
 }
 
 void run() {
     scanf("%d %d", &N, &H);
+    doit(N);
     REP(i,H) {
         scanf("%d %d", &C1, &C2);
         if (C1 > C2) swap(C1, C2);
-        if (doit(N, C1, C2)) printf("B");
+        if (cmp(C1, C2, ans[N].first, ans[N].second)) printf("B");
         else printf("F");
     }
     printf("\n");
@@ -96,7 +119,7 @@ void run() {
 
 int main() {
     //showtime();
-    memset(mm, -1, sizeof(mm));
+    ans.assign(105, make_pair(-1, -1));
     int kase;
     scanf("%d", &kase);
     FOR(k,1,kase) {
