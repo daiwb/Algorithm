@@ -1,0 +1,67 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Have you ever had a dream, that you were so sure was real? What if you were unable to wake from that dream? How would you know the difference between the dream world and the real world?</p><br></br><br></br>
+
+<p>To answer this complex puzzle, one of the questions that must be answered is to find out whether the world that you live in can be represented by a <i>chess matrix</i>.</p><br></br><br></br>
+
+<p>Cells of a matrix are called adjacent if they share an edge.
+A matrix of zeroes and ones is called a chess matrix if there are no two adjacent cells that share the same value.
+Hence, in a chess matrix the zeroes and ones have to alternate in the same way the colors alternate on a chessboard:</p><br></br><br></br>
+
+<p><img src="http://i60.tinypic.com/2n8vclz.png"></img></p><br></br><br></br>
+
+<p>You are given a vector &lt;string&gt; <b>board</b> that represents a rectangular grid of cells, with a 0 or a 1 in each cell.
+Each character of each element of <b>board</b> will be either '0' or '1'.
+In this grid we selected some rectangular subgrid that is a chess matrix.
+Return the largest possible area of the selected subgrid.</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>TheMatrix</td></tr><tr><td>Method:</td><td>MaxArea</td></tr><tr><td>Parameters:</td><td>vector &lt;string&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int MaxArea(vector &lt;string&gt; board)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 1 and 100 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of the <b>board</b> is a string containing between 1 and 100 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>All elements of <b>board</b> will have the same length.</td></tr><tr><td align="center" valign="top">-</td><td>Each character of each element of <b>board</b> will be either '0' or '1'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;1&quot;, 
+ &quot;0&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">The entire board is a chess matrix.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0000&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">The largest possible chess matrix here is just a single cell.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;01&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">Again, the entire board is a chess matrix.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;001&quot;,
+ &quot;000&quot;,
+ &quot;100&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 2</pre></td></tr><tr><td><table><tr><td colspan="2">Each rectangular subgrid is determined by a contiguous range of rows and a contiguous range of columns. The four corners of this grid do not form a valid rectangular subgrid.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;0&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;101&quot;, 
+ &quot;010&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 6</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">6)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;101&quot;, 
+ &quot;011&quot;, 
+ &quot;101&quot;, 
+ &quot;010&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">7)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;11001110011000110001111001001110110011010110001011&quot;, 
+ &quot;10100100010111111011111001011110101111010011100001&quot;, 
+ &quot;11101111001110100110010101101100011100101000010001&quot;, 
+ &quot;01000010001010101100010011111000100100110111111000&quot;, 
+ &quot;10110100000101100000111000100001011101111101010010&quot;, 
+ &quot;00111010000011100001110110010011010110010011100100&quot;, 
+ &quot;01100001111101001101001101100001111000111001101010&quot;, 
+ &quot;11010000000011011010100010000000111011001001100101&quot;, 
+ &quot;10100000000100010100100011010100110110110001000001&quot;, 
+ &quot;01101010101100001100000110100110100000010100100010&quot;, 
+ &quot;11010000001110111111011010011110001101100011100010&quot;, 
+ &quot;11101111000000011010011100100001100011111111110111&quot;, 
+ &quot;11000001101100100011000110111010011001010100000001&quot;, 
+ &quot;00100001111001010000101101100010000001100100001000&quot;, 
+ &quot;01001110110111101011010000111111101011000110010111&quot;, 
+ &quot;01001010000111111001100000100010101100100101010100&quot;, 
+ &quot;11111101001101110011011011011000111001101100011011&quot;, 
+ &quot;10000100110111000001110110010000000000111100101101&quot;, 
+ &quot;01010011101101101110000011000110011111001111011100&quot;, 
+ &quot;01101010011111010000011001111101011010011100001101&quot;, 
+ &quot;11011000011000110010101111100000101011011111101100&quot;, 
+ &quot;11100001001000110010100011001010101101001010001100&quot;, 
+ &quot;11011011001100111101001100111100000101011101101011&quot;, 
+ &quot;11110111100100101011100101111101000111001111110111&quot;, 
+ &quot;00011001100110111100111100001100101001111100001111&quot;, 
+ &quot;10001111100101110111001111100000000011110000100111&quot;, 
+ &quot;10101010110110100110010001001010000111100110100011&quot;, 
+ &quot;01100110100000001110101001101011001010001101110101&quot;, 
+ &quot;10110101110100110110101001100111110000101111100110&quot;, 
+ &quot;01011000001001101110100001101001110011001001110001&quot;, 
+ &quot;00100101010001100110110101001010010100001011000011&quot;, 
+ &quot;00011101100100001010100000000011000010100110011100&quot;, 
+ &quot;11001001011000000101111111000000110010001101101110&quot;, 
+ &quot;10101010110110010000010011001100110101110100111011&quot;, 
+ &quot;01101001010111010001101000100011101001110101000110&quot;, 
+ &quot;00110101101110110001110101110010100100110000101101&quot;, 
+ &quot;11010101000111010011110011000001101111010011110011&quot;, 
+ &quot;10010000010001110011011101001110110010001100011100&quot;, 
+ &quot;00111101110001001100101001110100110010100110110000&quot;, 
+ &quot;00010011011000101000100001101110111100100000010100&quot;, 
+ &quot;01101110001101000001001000001011101010011101011110&quot;, 
+ &quot;00000100110011001011101011110011011101100001110111&quot;, 
+ &quot;00110011110000011001011100001110101010100110010110&quot;, 
+ &quot;00111001010011011111010100000100100000101101110001&quot;, 
+ &quot;10101101101110111110000011111011001011100011110001&quot;, 
+ &quot;00101110010101111000001010110100001110111011100011&quot;, 
+ &quot;01111110010100111010110001111000111101110100111011&quot;}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 12</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
