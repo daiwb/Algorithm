@@ -83,9 +83,13 @@ $ENDCUT$
 #define RFOR(i,a,b) for(int i=(a);i>=(b);--i)
 #define FOREACH(it,c) for(typeof((c).begin())it=(c).begin();it!=(c).end();++it)
 #define CLR(x) memset((x),0,sizeof((x)))
+#define MP make_pair
+#define MPI make_pair<int, int>
+#define PB push_back
 typedef long long LL;
 typedef vector<int> VI;
 typedef vector<string> VS;
+typedef pair<int, int> PI;
 
 $BEGINCUT$
 vector<string> split( const string& s, const string& delim =" " ) {
