@@ -1,0 +1,39 @@
+<html><body bgcolor="#ffffff" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Consider the following story.
+</p>
+
+<p>
+STORY STARTS HERE.
+</p>
+
+<p>
+There were three mathematicians: Susan, Priscilla, and Bob.
+Bob picked two positive integers x and y such that x &lt;= y.
+He then told their sum to Susan and their product to Priscilla.
+Susan and Priscilla both knew all the facts listed above.
+Then, Susan and Priscilla made the following statements:
+<ul>
+<li>Susan: "I am certain that you cannot determine my number."</li>
+<li>Priscilla: "Thanks for telling me that. Now I'm sure that your number is S."</li>
+</ul>
+</p>
+
+<p>
+STORY ENDS HERE.
+</p>
+
+<p>
+My friends Baska and Olivia are fond of puzzles.
+Recently, Baska told Olivia the above story.
+When telling the story, Baska used some specific positive integer (for example, 9) instead of S.
+Then, she asked Olivia to determine x and y.
+Olivia easily came up with the unique solution.
+</p>
+
+<p>
+Of course, you don't know the integer Baska used instead of S.
+Instead, you are given two ints <b>A</b> and <b>B</b>.
+Find all S between <b>A</b> and <b>B</b>, inclusive, such that the above discussion between Baska and Olivia could have happened.
+Return the sum of all such S.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>SumAndProductPuzzle</td></tr><tr><td>Method:</td><td>getSum</td></tr><tr><td>Parameters:</td><td>int, int</td></tr><tr><td>Returns:</td><td>long long</td></tr><tr><td>Method signature:</td><td>long long getSum(int A, int B)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>Watch out for overflow. The return value may overflow a 32-bit integer variable.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>A</b> will be between 1 and 5,000,000, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>B</b> will be between <b>A</b> and 5,000,000, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>30</pre></td></tr><tr><td><pre>33</pre></td></tr></table></td></tr><tr><td><pre>Returns: 33</pre></td></tr><tr><td><table><tr><td colspan="2">The only valid S in this range is 33.
+The unique pair (x,y) that corresponds to S=33 is (1,32).</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>8</pre></td></tr><tr><td><pre>11</pre></td></tr></table></td></tr><tr><td><pre>Returns: 19</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>40</pre></td></tr><tr><td><pre>43</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">Sometimes the given range doesn't contain any valid S. In such case the correct return value is 0.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>47</pre></td></tr><tr><td><pre>74</pre></td></tr></table></td></tr><tr><td><pre>Returns: 168</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>1</pre></td></tr><tr><td><pre>2</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
