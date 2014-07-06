@@ -85,13 +85,17 @@ static void eq( int n, string have, string need ) {
 #define CLR(x) memset((x),0,sizeof((x)))
 #define SORT(x) sort(x.begin(), x.end())
 #define REVERSE(x) reverse(x.begin(), x.end())
+#define SZ(x) x.size()
 #define MP make_pair
 #define MPI make_pair<int, int>
 #define PB push_back
 typedef long long LL;
+typedef vector<bool> VB;
 typedef vector<int> VI;
+typedef vector<vector<int> > VVI;
 typedef vector<string> VS;
 typedef pair<int, int> PI;
+typedef vector<pair<int, int> > VPI;
 
 // BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
@@ -140,66 +144,77 @@ string i2s(int n) {
 }
 // END CUT HERE
 
-class SubstringReversal {
+int que[2505];
+
+class CliqueGraph {
 public:
-    vector <int> solve(string str) {
-        int len = str.length();
-
-        string tp = str;
-        SORT(tp);
-
+    long long calcSum(int N, vector <int> V, vector <int> sizes) {
+        VVI mm(N, VI());
         int idx = 0;
-        while (idx < len && str[idx] == tp[idx]) ++idx;
-        if (idx == len) return VI(2, 0);
-
-        int q = -1;
-        string mm;
-        FOR(i,idx+1,len-1) {
-            tp = str;
-            reverse(tp.begin() + idx, tp.begin() + i + 1);
-            if (q == -1 || tp < mm) {
-                q = i;
-                mm = tp;
+        int m = SZ(sizes);
+        VVI ver(m, VI());
+        REP(i,m) {
+            REP(j,sizes[i]) {
+                mm[V[idx]].PB(i);
+                ver[i].PB(V[idx]);
+                ++idx;
             }
         }
-
-        VI res;
-        res.PB(idx);
-        res.PB(q);
-        return res;
+        LL res = 0;
+        REP(st,N) {
+            VB used(m, false);
+            VI dist(N, -1);
+            dist[st] = 0;
+            que[0] = st;
+            int head = 0, tail = 0;
+            while (head <= tail) {
+                int cur = que[head];
+                ++head;
+                REP(i,SZ(mm[cur])) {
+                    int id = mm[cur][i];
+                    if (used[id]) continue;
+                    used[id] = true;
+                    REP(j,SZ(ver[id])) {
+                        int now = ver[id][j];
+                        if (dist[now] != -1) continue;
+                        dist[now] = dist[cur] + 1;
+                        res += dist[now];
+                        que[++tail] = now;
+                    }
+                }
+            }
+        }
+        return res / 2;
     }
 };
 // BEGIN CUT HERE
 int main() {
     {
-        int retrunValueARRAY[] = {2, 3 };
-        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
-        SubstringReversal theObject;
-        eq(0, theObject.solve("abdc"),retrunValue);
+        int VARRAY[] = {0,1,2,0,3};
+        vector <int> V( VARRAY, VARRAY+ARRSIZE(VARRAY) );
+        int sizesARRAY[] = {3,2};
+        vector <int> sizes( sizesARRAY, sizesARRAY+ARRSIZE(sizesARRAY) );
+        CliqueGraph theObject;
+        eq(0, theObject.calcSum(4, V, sizes),8LL);
     }
     {
-        int retrunValueARRAY[] = {0, 0 };
-        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
-        SubstringReversal theObject;
-        eq(1, theObject.solve("aabbcc"),retrunValue);
+        int VARRAY[] = {0,1,2,3,1,2,4};
+        vector <int> V( VARRAY, VARRAY+ARRSIZE(VARRAY) );
+        int sizesARRAY[] = {4,3};
+        vector <int> sizes( sizesARRAY, sizesARRAY+ARRSIZE(sizesARRAY) );
+        CliqueGraph theObject;
+        eq(1, theObject.calcSum(5, V, sizes),12LL);
     }
     {
-        int retrunValueARRAY[] = {0, 4 };
-        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
-        SubstringReversal theObject;
-        eq(2, theObject.solve("misof"),retrunValue);
-    }
-    {
-        int retrunValueARRAY[] = {0, 2 };
-        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
-        SubstringReversal theObject;
-        eq(3, theObject.solve("ivan"),retrunValue);
-    }
-    {
-        int retrunValueARRAY[] = {0, 13 };
-        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
-        SubstringReversal theObject;
-        eq(4, theObject.solve("thisseemstobeaneasyproblem"),retrunValue);
+        int VARRAY[] = {1,3,5,7,9,11,13,0
+           ,2,3,6,7,10,11,14,0
+           ,4,5,6,7,12,13,14,0
+           ,8,9,10,11,12,13,14,0};
+        vector <int> V( VARRAY, VARRAY+ARRSIZE(VARRAY) );
+        int sizesARRAY[] = {8,8,8,8};
+        vector <int> sizes( sizesARRAY, sizesARRAY+ARRSIZE(sizesARRAY) );
+        CliqueGraph theObject;
+        eq(2, theObject.calcSum(15, V, sizes),130LL);
     }
     return 0;
 }

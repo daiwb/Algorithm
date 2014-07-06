@@ -1,0 +1,31 @@
+<html><body bgcolor="#ffffff" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Fox Ciel has an unweighted undirected connected graph G with <b>N</b> vertices.
+The vertices are numbered 0 through <b>N</b>-1.
+The graph has a special structure.
+You are given its description in two vector &lt;int&gt;s <b>V</b> and <b>sizes</b>.
+<b>V</b> contains a sequence of vertex numbers.
+Note that some vertex numbers may occur in <b>V</b> multiple times.</p>
+<br></br>
+<p>For each valid i, let S[i] be the sum of the first i elements of <b>sizes</b>.
+For example, if <b>sizes</b>={10,20,30} then S[0]=0, S[1]=10, S[2]=10+20=30, and S[3]=10+20+30=60.</p>
+<br></br>
+<p>The graph G that is described by <b>V</b> and <b>sizes</b> looks as follows:
+For each valid i, consider all pairs (j,k) such that S[i] &lt;= j &lt; k &lt; S[i+1].
+For each such pair (j,k), our graph G contains an edge between the vertices V[j] and V[k].
+There are no other edges in G, only those defined above.
+You may assume that <b>V</b> and <b>sizes</b> are always such that the resulting graph G is connected.</p>
+<br></br>
+<p>For each pair of vertices, compute their distance.
+Return the sum of all those distances.</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>CliqueGraph</td></tr><tr><td>Method:</td><td>calcSum</td></tr><tr><td>Parameters:</td><td>int, vector &lt;int&gt;, vector &lt;int&gt;</td></tr><tr><td>Returns:</td><td>long long</td></tr><tr><td>Method signature:</td><td>long long calcSum(int N, vector &lt;int&gt; V, vector &lt;int&gt; sizes)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>For some test cases, the correct return value may overflow a signed 32-bit integer variable.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>N</b> will be between 2 and 2,500, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>V</b> will contain between 1 and 5,000 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>V</b> will be between 0 and <b>N</b>-1, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>sizes</b> will contain between 1 and 2,500 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>sizes</b> will be between 2 and <b>N</b>, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>The sum of all elements of <b>sizes</b> will be equal to the number of elements in <b>V</b>.</td></tr><tr><td align="center" valign="top">-</td><td>For each valid i, the elements <b>V</b>[S[i]], <b>V</b>[S[i]+1], ..., <b>V</b>[S[i+1]-1] will be distinct. (See the problem statement for the definition of S[i].)</td></tr><tr><td align="center" valign="top">-</td><td>The graph G described by <b>V</b> and <b>sizes</b> will be connected.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>4</pre></td></tr><tr><td><pre>{0,1,2,0,3}</pre></td></tr><tr><td><pre>{3,2}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 8</pre></td></tr><tr><td><table><tr><td colspan="2">The graph looks as follows:<br></br><br></br>
+<img src="http://www.topcoder.com/contest/problem/CliqueGraph/fig0.png"></img><br></br><br></br>
+The distance between vertex 0 and vertex 1 : 1<br></br>
+The distance between vertex 0 and vertex 2 : 1<br></br>
+The distance between vertex 0 and vertex 3 : 1<br></br>
+The distance between vertex 1 and vertex 2 : 1<br></br>
+The distance between vertex 1 and vertex 3 : 2<br></br>
+The distance between vertex 2 and vertex 3 : 2<br></br>
+The sum is 8.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>5</pre></td></tr><tr><td><pre>{0,1,2,3,1,2,4}</pre></td></tr><tr><td><pre>{4,3}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 12</pre></td></tr><tr><td><table><tr><td colspan="2">The graph looks as follows:<br></br><br></br>
+<img src="http://www.topcoder.com/contest/problem/CliqueGraph/fig1.png"></img>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>15</pre></td></tr><tr><td><pre>{1,3,5,7,9,11,13,0
+,2,3,6,7,10,11,14,0
+,4,5,6,7,12,13,14,0
+,8,9,10,11,12,13,14,0}</pre></td></tr><tr><td><pre>{8,8,8,8}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 130</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
