@@ -26,6 +26,9 @@
 
 (load-theme 'tango-dark)
 
+; try to improve slow performance on windows.
+(setq w32-get-true-file-attributes nil)
+
 '(add-to-list 'load-path (expand-file-name "D:\.emacs.d"))
 
 (custom-set-variables

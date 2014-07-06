@@ -1,6 +1,6 @@
-$BEGINCUT$
-$PROBLEMDESC$
-$ENDCUT$
+// BEGIN CUT HERE
+
+// END CUT HERE
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -17,7 +17,7 @@ $ENDCUT$
 #include <cstring>
 using namespace std;
 
-$BEGINCUT$
+// BEGIN CUT HERE
 #define ARRSIZE(x) (sizeof(x)/sizeof(x[0]))
 
 template<typename T> void print( T a ) {
@@ -76,7 +76,7 @@ static void eq( int n, string have, string need ) {
         cerr << "." << endl;
     }
 }
-$ENDCUT$
+// END CUT HERE
 
 #define REP(i,n) for(int i=0;i<(n);++i)
 #define FOR(i,a,b) for(int i=(a);i<=(b);++i)
@@ -93,7 +93,7 @@ typedef vector<int> VI;
 typedef vector<string> VS;
 typedef pair<int, int> PI;
 
-$BEGINCUT$
+// BEGIN CUT HERE
 vector<string> split( const string& s, const string& delim =" " ) {
     vector<string> res;
     string t;
@@ -120,9 +120,9 @@ vector<int> splitInt( const string& s, const string& delim =" " ) {
         res.push_back( atoi( tok[i].c_str() ) );
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-$BEGINCUT$
+// BEGIN CUT HERE
 int s2i(string s) {
     stringstream ss;
     ss << s;
@@ -138,19 +138,69 @@ string i2s(int n) {
     ss >> res;
     return res;
 }
-$ENDCUT$
+// END CUT HERE
 
-class $CLASSNAME$ {
+class SubstringReversal {
 public:
-    $RC$ $METHODNAME$($METHODPARMS$) {
-        $RC$ res;
+    vector <int> solve(string str) {
+int len = str.length();
+
+        string tp = str;
+        SORT(tp);
+
+        int idx = 0;
+        while (idx < len && str[idx] == tp[idx]) ++idx;
+        if (idx == len) return VI(2, 0);
+
+        int q = -1;
+        string mm;
+        FOR(i,idx+1,len-1) {
+            tp = str;
+            reverse(tp.begin() + idx, tp.begin() + i + 1);
+            if (q == -1 || tp < mm) {
+                q = i;
+                mm = tp;
+            }
+        }
+
+        VI res;
+        res.PB(idx);
+        res.PB(q);
         return res;
     }
-$WRITERCODE$
 };
-$BEGINCUT$
+// BEGIN CUT HERE
 int main() {
-$MAINBODY$
+    {
+        int retrunValueARRAY[] = {2, 3 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        SubstringReversal theObject;
+        eq(0, theObject.solve("abdc"),retrunValue);
+    }
+    {
+        int retrunValueARRAY[] = {0, 0 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        SubstringReversal theObject;
+        eq(1, theObject.solve("aabbcc"),retrunValue);
+    }
+    {
+        int retrunValueARRAY[] = {0, 4 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        SubstringReversal theObject;
+        eq(2, theObject.solve("misof"),retrunValue);
+    }
+    {
+        int retrunValueARRAY[] = {0, 2 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        SubstringReversal theObject;
+        eq(3, theObject.solve("ivan"),retrunValue);
+    }
+    {
+        int retrunValueARRAY[] = {0, 13 };
+        vector <int> retrunValue( retrunValueARRAY, retrunValueARRAY+ARRSIZE(retrunValueARRAY) );
+        SubstringReversal theObject;
+        eq(4, theObject.solve("thisseemstobeaneasyproblem"),retrunValue);
+    }
     return 0;
 }
-$ENDCUT$
+// END CUT HERE
