@@ -85,13 +85,17 @@ $ENDCUT$
 #define CLR(x) memset((x),0,sizeof((x)))
 #define SORT(x) sort(x.begin(), x.end())
 #define REVERSE(x) reverse(x.begin(), x.end())
+#define SZ(x) x.size()
 #define MP make_pair
 #define MPI make_pair<int, int>
 #define PB push_back
 typedef long long LL;
+typedef vector<bool> VB;
 typedef vector<int> VI;
+typedef vector<vector<int> > VVI;
 typedef vector<string> VS;
 typedef pair<int, int> PI;
+typedef vector<pair<int, int> > VPI;
 
 $BEGINCUT$
 vector<string> split( const string& s, const string& delim =" " ) {
