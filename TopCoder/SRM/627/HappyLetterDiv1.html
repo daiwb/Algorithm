@@ -1,0 +1,28 @@
+<html><body bgcolor="#ffffff" text="#000000"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>The Happy Letter game is played as follows:
+At the beginning, several players enter the field.
+Each player has a lowercase English letter on their back.
+The game is played in turns.
+In each turn, you select two players with different letters, and both selected players leave the field.
+The game ends once it is impossible to take another turn.</p>
+
+<p>If there are some players left in the field at the end of the game, they must all have the same letter.
+That letter is called the winning letter.
+If there are no players left in the field at the end of the game, there is no winning letter.</p>
+
+<p>You are given a string <b>letters</b>.
+The characters in <b>letters</b> are the characters carried by the players at the beginning of the game.
+Return a string with all possible winning letters.
+The letters in the returned string must be sorted in increasing order.</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>HappyLetterDiv1</td></tr><tr><td>Method:</td><td>getHappyLetters</td></tr><tr><td>Parameters:</td><td>string</td></tr><tr><td>Returns:</td><td>string</td></tr><tr><td>Method signature:</td><td>string getHappyLetters(string letters)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>If there's no happy letter, return the empty string.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>letters will contain between 1 and 50 elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of letters will be a lowercase English letter ('a'-'z').</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aabbacccc&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;abc&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">Each of the three letters can be the winning letter.
+Here is one possibility how 'a' can be the winning letter:
+Let's number the players 0 through 8 in the order in which they appear in the input.
+We can then play the game as follows:
+<ul>
+<li>Send away players 1 ('a') and 8 ('c').</li>
+<li>Send away players 2 ('b') and 6 ('c').</li>
+<li>Send away players 7 ('c') and 0 ('a').</li>
+<li>Send away players 5 ('c') and 3 ('b').</li>
+<li>The only player left is player 4 ('a'), hence 'a' is the winning letter.</li>
+</ul>
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aaaaaaaccdd&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;a&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">Only letter 'a' can win.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;ddabccadb&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;abcd&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;aaabbb&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">No letter can win.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>&quot;rdokcogscosn&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;cos&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>

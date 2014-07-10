@@ -1,0 +1,32 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>You are given a connected undirected graph with N vertices.
+The vertices are numbered 0 through N-1.
+The graph is special: the number of edges is exactly equal to the number of vertices.
+You are given the description of the graph as three vector &lt;int&gt;s: <b>A</b>, <b>B</b>, and <b>V</b>.
+Each of these vector &lt;int&gt;s has N elements.
+For each valid i, there's an edge between vertices <b>A</b>[i] and <b>B</b>[i].
+There are no self-loops and no duplicate edges.
+For each valid i, we associate the value <b>V</b>[i] with the vertex i.</p>
+
+<p>We will be interested in some simple paths in this graph.
+A simple path is a sequence of vertices such that no vertex is used twice, and each pair of consecutive vertices is connected by an edge.
+For any simple path, we can write down a sequence of integers: the values associated with the vertices on the path, in order of appearance.
+We will call such a sequence the <i>value list</i> of the given simple path.</p>
+
+<p>An inversion in a sequence S is a pair of valid indices (i,j) into the sequence S such that i &lt; j but S[i] &gt; S[j].
+For example, the sequence S = {10, 30, 20, 20} has two inversions: (1,2) and (1,3).
+(The indices are 0-based.)</p>
+
+<p>You are given a graph G in the format described above, and an int <b>K</b>.
+In the graph G, consider all simple paths with <b>K</b> or more vertices.
+If there is no such simple path, return -1.
+Otherwise, return the smallest number of inversions in the value list of such path.</p>
+</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>GraphInversions</td></tr><tr><td>Method:</td><td>getMinimumInversions</td></tr><tr><td>Parameters:</td><td>vector &lt;int&gt;, vector &lt;int&gt;, vector &lt;int&gt;, int</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int getMinimumInversions(vector &lt;int&gt; A, vector &lt;int&gt; B, vector &lt;int&gt; V, int K)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td>N will be between 3 and 1000, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>A</b>, <b>B</b>, and <b>V</b> will each have N elements.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>A</b> and <b>B</b> will be between 0 and N-1, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>For all valid i, <b>A</b>[i] will not be equal to <b>B</b>[i]. (I.e., there are no self loops.)</td></tr><tr><td align="center" valign="top">-</td><td>No two edges will connect the same pair of vertices.</td></tr><tr><td align="center" valign="top">-</td><td>The graph described by <b>A</b> and <b>B</b> will be connected.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>V</b> will be between 1 and 1000, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td><b>K</b> will be between 1 and N, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{0,1,2}</pre></td></tr><tr><td><pre>{1,2,0}</pre></td></tr><tr><td><pre>{40,50,60}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: 0</pre></td></tr><tr><td><table><tr><td colspan="2">The best path is the path {0, 1, 2}. Its value list is the sequence {40, 50, 60}, and there are 0 inversions in this sequence.
+
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{0,1,2,3}</pre></td></tr><tr><td><pre>{1,2,3,0}</pre></td></tr><tr><td><pre>{60,40,50,30}</pre></td></tr><tr><td><pre>3</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">As <b>K</b>=3, we are interested in simple paths of lengths 3 or more.
+Each simple path of length 3 or more gives us at least one inversion.
+The path {3, 2, 1} is an example of an optimal path.
+Its value list is {30, 50, 40}.
+There is 1 inversion: the 50 occurring before the 40.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{0,1,2,3,0}</pre></td></tr><tr><td><pre>{1,2,3,0,4}</pre></td></tr><tr><td><pre>{10,10,10,5,5}</pre></td></tr><tr><td><pre>5</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">Two or more nodes can have the same associated value.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{0,1,2,3,0,2}</pre></td></tr><tr><td><pre>{1,2,3,0,4,5}</pre></td></tr><tr><td><pre>{10,2,5,3,7,1}</pre></td></tr><tr><td><pre>6</pre></td></tr></table></td></tr><tr><td><pre>Returns: -1</pre></td></tr><tr><td><table><tr><td colspan="2">There are no simple paths with length 6.
+</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{5,7,7,5,5,7,6,4}</pre></td></tr><tr><td><pre>{2,0,2,0,1,4,7,3}</pre></td></tr><tr><td><pre>{15,10,5,30,22,10,5,2}</pre></td></tr><tr><td><pre>6</pre></td></tr></table></td></tr><tr><td><pre>Returns: 3</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
