@@ -137,11 +137,28 @@ string i2s(int n) {
 // END CUT HERE
 
 #define INF 1000000000
+#define MAXN 1005
 
 int n, k, res;
 VVI mm;
 VI val;
-int used[1005], que[1005];
+int used[MAXN], sum[MAXN];
+
+void update(int idx, int v) {
+    while (idx <= MAXN) {
+        sum[idx] += v;
+        idx += (idx & -idx);
+    }
+}
+
+int total(int idx) {
+    int t = 0;
+    while (idx > 0) {
+        t += sum[idx];
+        idx -= (idx & -idx);
+    }
+    return t;
+}
 
 class GraphInversions {
 public:
@@ -152,16 +169,16 @@ public:
             return;
         }
         REP(i,SZ(mm[cur])) {
-            int next = mm[cur][i];
-            if (used[next] == 1) continue;
-            used[next] = 1;
-            que[num] = next;
-            int add = 0;
-            REP(j,num) {
-                if (val[next] < val[que[j]]) ++add;
+            int prev = mm[cur][i];
+            if (used[prev] == 0) {
+                used[prev] = 1;
+                int cur = val[prev];
+                update(cur, 1);
+                int add = total(cur - 1);
+                dfs(prev, num + 1, sum + add);
+                used[prev] = 0;
+                update(cur, -1);
             }
-            dfs(next, num + 1, sum + add);
-            used[next] = 0;
         }
     }
     int getMinimumInversions(vector <int> A, vector <int> B, vector <int> V, int K) {
@@ -177,8 +194,9 @@ public:
         res = INF;
         REP(i,n) {
             CLR(used);
-            que[0] = i;
+            CLR(sum);
             used[i] = 1;
+            update(val[i], 1);
             dfs(i, 1, 0);
         }
         if (res == INF) return -1;

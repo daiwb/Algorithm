@@ -141,40 +141,26 @@ public:
     string getHappyLetters(string letters) {
         VI mm(26, 0);
         int len = letters.size();
-        REP(i,len) {
-            mm[letters[i] - 'a']++;
-        }
+        REP(i,len) mm[letters[i] - 'a']++;
         string res = "";
-
+        int m = (len & 1) ? 1 : 2;
+        int r = (len - m) >> 1;
         REP(ch,26) {
-            if (mm[ch] == 0) continue;
-            bool isok = false;
-            FOR(m,1,mm[ch]) {
-                int cnt = len - m;
-                if (cnt & 1) continue;
-                VI tmp = mm;
-                tmp[ch] = mm[ch] - m;
-                bool flag = true;
-                REP(i,26) {
-                    if (tmp[i] > (cnt / 2)) {
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag) {
-                    isok = true;
+            if (mm[ch] < m) continue;
+            bool isok = true;
+            REP(i,26) {
+                if (i == ch) continue;
+                if (mm[i] > r) {
+                    isok = false;
                     break;
                 }
             }
-            if (isok) {
-                res += char(ch + 'a');
-            }
+            if (isok) res += char('a' + ch);
         }
         
         SORT(res);
         return res;
     }
-
 };
 // BEGIN CUT HERE
 int main() {
